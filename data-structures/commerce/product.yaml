@@ -11,7 +11,7 @@ data:
     vendor: com.example-schema-repo
     name: product
     format: jsonschema
-    version: 1-0-0
+    version: 1-0-1
   type: object
   properties:
     sku:
@@ -43,6 +43,12 @@ data:
         - boolean
         - "null"
       description: "Whether the product is currently in stock."
+    imageUrl:
+      type:
+        - string
+        - "null"
+      format: uri
+      description: "URL to the product image."
   required:
     - sku
     - productName

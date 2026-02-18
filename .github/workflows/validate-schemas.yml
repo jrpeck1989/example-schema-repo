@@ -8,10 +8,14 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    env:
+      SNOWPLOW_CONSOLE_ORG_ID: ${{ secrets.SNOWPLOW_CONSOLE_ORG_ID }}
+      SNOWPLOW_CONSOLE_API_KEY_ID: ${{ secrets.SNOWPLOW_CONSOLE_API_KEY_ID }}
+      SNOWPLOW_CONSOLE_API_KEY: ${{ secrets.SNOWPLOW_CONSOLE_API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
       - uses: snowplow/setup-snowplow-cli@v1
 
       - name: Validate data structures
-        run: snowplow-cli validate data-structures --data-structures-path ./data-structures
+        run: snowplow-cli ds validate ./data-structures

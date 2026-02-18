@@ -14,4 +14,4 @@ jobs:
       - uses: snowplow/setup-snowplow-cli@v1
 
       - name: Validate data structures
-        run: snowplow-cli validate data-structures --data-structures-path ./data-structures
+        run: snowplow-cli ds validate ./data-structures

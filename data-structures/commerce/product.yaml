@@ -43,6 +43,12 @@ data:
         - boolean
         - "null"
       description: "Whether the product is currently in stock."
+    imageUrl:
+      type:
+        - string
+        - "null"
+      format: uri
+      description: "URL to the product image."
   required:
     - sku
     - productName

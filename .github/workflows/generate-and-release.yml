@@ -1,0 +1,49 @@
+name: Generate Tracking Code & Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate tracking code with Snowtype
+        run: npx @snowplow/snowtype generate
+
+      - name: Clean generated output
+        run: node scripts/clean-generated.mjs
+
+      - name: Package generated code
+        run: tar -czf snowtype-tracking-code.tar.gz -C generated .
+
+      - name: Create release tag
+        id: tag
+        run: |
+          TAG="v$(date +%Y.%m.%d)-$(echo $GITHUB_SHA | cut -c1-7)"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: "Tracking Code ${{ steps.tag.outputs.tag }}"
+          body: |
+            Auto-generated type-safe tracking functions from the latest schemas on `main`.
+
+            Download `snowtype-tracking-code.tar.gz` and extract into your project.
+          files: snowtype-tracking-code.tar.gz

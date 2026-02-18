@@ -1,0 +1,16 @@
+{
+  "name": "example-schema-repo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Demo repository for managing Snowplow schemas with the Snowplow CLI and Snowtype",
+  "scripts": {
+    "generate": "npx @snowplow/snowtype generate",
+    "clean": "node scripts/clean-generated.mjs",
+    "build": "npm run generate && npm run clean"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "js-yaml": "^4.1.0"
+  }
+}

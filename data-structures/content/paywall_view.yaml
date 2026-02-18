@@ -1,0 +1,43 @@
+apiVersion: v1
+resourceType: data-structure
+meta:
+  hidden: false
+  schemaType: event
+  customData: {}
+data:
+  $schema: "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#"
+  description: "Fired when a user encounters a paywall while trying to access content."
+  self:
+    vendor: com.example
+    name: paywall_view
+    format: jsonschema
+    version: 1-0-0
+  type: object
+  properties:
+    articleId:
+      type: string
+      format: uuid
+      description: "The article that triggered the paywall."
+    paywallType:
+      type: string
+      enum:
+        - hard
+        - metered
+        - freemium
+      description: "The type of paywall presented to the user."
+    articlesRemaining:
+      type:
+        - integer
+        - "null"
+      minimum: 0
+      maximum: 10000
+      description: "Number of free articles the user has left (metered paywalls only)."
+    subscriptionPrompted:
+      type:
+        - boolean
+        - "null"
+      description: "Whether a subscription prompt was displayed alongside the paywall."
+  required:
+    - articleId
+    - paywallType
+  additionalProperties: false

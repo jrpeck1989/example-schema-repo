@@ -1,0 +1,45 @@
+apiVersion: v1
+resourceType: data-structure
+meta:
+  hidden: false
+  schemaType: entity
+  customData: {}
+data:
+  $schema: "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#"
+  description: "Context entity describing a user. Attach to any event where user identity is relevant."
+  self:
+    vendor: com.example
+    name: user
+    format: jsonschema
+    version: 1-0-0
+  type: object
+  properties:
+    userId:
+      type: string
+      format: uuid
+      description: "Unique identifier for the user."
+    email:
+      type:
+        - string
+        - "null"
+      format: email
+      description: "The user's email address."
+    username:
+      type:
+        - string
+        - "null"
+      maxLength: 64
+      description: "The user's display name."
+    accountType:
+      type:
+        - string
+        - "null"
+      enum:
+        - free
+        - premium
+        - enterprise
+        - null
+      description: "The subscription tier of the user's account."
+  required:
+    - userId
+  additionalProperties: false

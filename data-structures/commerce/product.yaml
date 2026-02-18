@@ -1,0 +1,51 @@
+apiVersion: v1
+resourceType: data-structure
+meta:
+  hidden: false
+  schemaType: entity
+  customData: {}
+data:
+  $schema: "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#"
+  description: "Context entity describing a product in the e-commerce catalogue."
+  self:
+    vendor: com.example
+    name: product
+    format: jsonschema
+    version: 1-0-0
+  type: object
+  properties:
+    sku:
+      type: string
+      maxLength: 64
+      description: "Stock Keeping Unit, primary key for the product."
+    productName:
+      type: string
+      maxLength: 256
+      description: "Display name of the product."
+    category:
+      type: string
+      maxLength: 128
+      description: "Product category (e.g. 'Electronics', 'Apparel')."
+    unitPrice:
+      type: number
+      minimum: 0
+      maximum: 1000000
+      description: "Price per unit of the product."
+    currency:
+      type:
+        - string
+        - "null"
+      maxLength: 3
+      pattern: "^[A-Z]{3}$"
+      description: "ISO 4217 currency code (e.g. 'USD', 'GBP')."
+    inStock:
+      type:
+        - boolean
+        - "null"
+      description: "Whether the product is currently in stock."
+  required:
+    - sku
+    - productName
+    - category
+    - unitPrice
+  additionalProperties: false

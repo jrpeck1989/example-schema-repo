@@ -11,8 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Snowplow CLI
-        uses: snowplow-product/snowplow-cli-action@v2
+      - uses: snowplow/setup-snowplow-cli@v1
 
       - name: Validate data structures
         run: snowplow-cli validate data-structures --data-structures-path ./data-structures

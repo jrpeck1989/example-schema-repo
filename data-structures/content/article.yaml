@@ -8,7 +8,7 @@ data:
   $schema: "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#"
   description: "Context entity describing an article. Attach to content interaction events such as page views or paywall views."
   self:
-    vendor: com.example
+    vendor: com.example-schema-repo
     name: article
     format: jsonschema
     version: 1-0-0

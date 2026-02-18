@@ -8,7 +8,7 @@ data:
   $schema: "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#"
   description: "Fired when a user adds a product to their shopping cart."
   self:
-    vendor: com.example
+    vendor: com.example-schema-repo
     name: add_to_cart
     format: jsonschema
     version: 1-0-0

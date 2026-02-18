@@ -8,7 +8,7 @@ data:
   $schema: "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#"
   description: "Context entity describing an article author. Attach alongside the article entity for content analytics."
   self:
-    vendor: com.example
+    vendor: com.example-schema-repo
     name: author
     format: jsonschema
     version: 1-0-0

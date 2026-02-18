@@ -8,7 +8,7 @@ data:
   $schema: "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#"
   description: "Context entity describing a user. Attach to any event where user identity is relevant."
   self:
-    vendor: com.example
+    vendor: com.example-schema-repo
     name: user
     format: jsonschema
     version: 1-0-0

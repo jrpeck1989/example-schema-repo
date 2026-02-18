@@ -24,6 +24,9 @@ jobs:
 
       - name: Generate tracking code with Snowtype
         run: npx @snowplow/snowtype generate
+        env:
+          SNOWPLOW_CONSOLE_API_KEY_ID: ${{ secrets.SNOWPLOW_CONSOLE_API_KEY_ID }}
+          SNOWPLOW_CONSOLE_API_KEY: ${{ secrets.SNOWPLOW_CONSOLE_API_KEY }}
 
       - name: Clean generated output
         run: node scripts/clean-generated.mjs

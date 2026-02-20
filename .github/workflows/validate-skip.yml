@@ -1,0 +1,13 @@
+name: Validate Schemas (Skip)
+
+on:
+  pull_request:
+    branches: [develop, main]
+    paths-ignore:
+      - "data-structures/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "No schema changes, skipping validation"

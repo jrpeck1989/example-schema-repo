@@ -49,7 +49,12 @@ data:
         maxLength: 128
         description: "A single freeform tag."
       description: "Freeform tags associated with the article."
+    authorId:
+      type: string
+      format: uuid
+      description: "Unique identifier for the author of the article."
   required:
     - articleId
     - title
+    - authorId
   additionalProperties: false

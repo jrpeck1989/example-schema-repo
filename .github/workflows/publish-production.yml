@@ -1,13 +1,14 @@
-name: Validate Schemas
+name: Publish Schemas to Production
 
 on:
-  pull_request:
-    branches: [develop, main]
+  push:
+    branches:
+      - main
     paths:
       - "data-structures/**"
 
 jobs:
-  validate:
+  publish:
     runs-on: ubuntu-latest
     env:
       SNOWPLOW_CONSOLE_ORG_ID: ${{ secrets.SNOWPLOW_CONSOLE_ORG_ID }}
@@ -18,5 +19,5 @@ jobs:
 
       - uses: snowplow/setup-snowplow-cli@v1
 
-      - name: Validate data structures
-        run: snowplow-cli ds validate ./data-structures --gh-annotate
+      - name: Publish data structures to production
+        run: snowplow-cli ds publish prod --managed-from $GITHUB_REPOSITORY

@@ -11,7 +11,7 @@ data:
     vendor: com.example-schema-repo
     name: user
     format: jsonschema
-    version: 1-0-0
+    version: 1-0-1
   type: object
   properties:
     userId:
@@ -40,6 +40,12 @@ data:
         - enterprise
         - null
       description: "The subscription tier of the user's account."
+    country:
+      type:
+        - string
+        - "null"
+      maxLength: 2
+      description: "The user's country."
   required:
     - userId
   additionalProperties: false

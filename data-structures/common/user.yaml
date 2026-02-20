@@ -40,6 +40,12 @@ data:
         - enterprise
         - null
       description: "The subscription tier of the user's account."
+    country:
+      type:
+        - string
+        - "null"
+      maxLength: 2
+      description: "The user's country."
   required:
     - userId
   additionalProperties: false

@@ -49,6 +49,11 @@ data:
         - "null"
       format: uri
       description: "URL to the product image."
+    grossPrice:
+      type: number
+      minimum: 0
+      maximum: 1000000
+      description: "Price of the product before taxes and discounts."
   required:
     - sku
     - productName
